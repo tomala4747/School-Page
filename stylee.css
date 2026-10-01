@@ -1,0 +1,769 @@
+/* ===== RESET & BASE ===== */
+* {
+    letter-spacing: 0.3px;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+/* ===== HEADER ===== */
+header {
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 200;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.kont-head {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;
+    min-height: 80px;
+}
+
+.kont-head > a:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.kont-head img {
+    height: 32px;
+    width: auto;
+}
+
+.dziennik {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 50px;
+    padding: 0 22px;
+    height: 38px;
+    background-color: rgb(13, 141, 150);
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    transition: background 0.2s;
+}
+
+.dziennik:hover {
+    background-color: rgb(9, 100, 107);
+}
+
+/* ===== NAV ===== */
+nav {
+    width: 100%;
+    margin-top: 10px;
+    justify-items: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.item {
+    position: relative;
+}
+
+.item > a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: rgb(13, 141, 150);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+
+.item > a:hover {
+    color: rgb(9, 100, 107);
+}
+
+.item > a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: rgb(13, 141, 150);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+    margin-top: 2px;
+}
+
+.item:hover > a::after {
+    transform: scaleX(1);
+}
+
+.arrow {
+    font-size: 0.65rem;
+    vertical-align: middle;
+}
+
+.sub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    padding: 8px 0;
+    list-style: none;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border-top: 2px solid rgb(13, 141, 150);
+}
+
+.sub li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: rgb(13, 141, 150);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sub li a:hover {
+    background: rgb(13, 141, 150);
+    color: white;
+}
+
+.item:hover .sub {
+    display: block;
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.55));
+    pointer-events: none;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1;
+    color: white;
+    width: 90%;
+}
+
+.hero-tag {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin: 0 0 12px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.hero-text h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-style: italic;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    margin: 0 0 16px;
+    line-height: 1.1;
+}
+
+.hero-sub {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ===== ANIMACJE ===== */
+.slide-in {
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 0.7s ease;
+}
+
+.slide-in.visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.slide-in:not(.visible) {
+    transform: translateX(-80px);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 0.7s ease;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right:not(.visible) {
+    transform: translateX(80px);
+}
+
+/* ===== SEKCJA INTRO ===== */
+.section-intro {
+    padding: 80px 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-inner {
+    max-width: 720px;
+}
+
+.intro-inner h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: rgb(13, 141, 150);
+    margin: 8px 0 16px;
+}
+
+.intro-inner p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.sekcja-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgb(13, 141, 150);
+    background: rgba(13, 141, 150, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-num {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: rgb(13, 141, 150);
+    line-height: 1;
+}
+
+.stat-opis {
+    font-size: 0.82rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+/* ===== LABEL SEKCJI ===== */
+.section-label-full {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.section-h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: #1a1a1a;
+    margin: 8px 0 0;
+}
+
+.section-h2.white {
+    color: white;
+}
+
+.section-sub {
+    font-size: 1rem;
+    color: #888;
+    margin: 12px 0 0;
+    max-width: 600px;
+}
+
+/* ===== FLEX SEKCJE (obrazek + tekst) ===== */
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.flex:nth-child(even) {
+    background: #fafafa;
+}
+
+.prawa {
+    flex-direction: row-reverse;
+}
+
+.slide-in-wrapper {
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.slide-in-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.tekst-sekcja {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.tekst-sekcja h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.tekst-sekcja p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.btn-more {
+    display: inline-block;
+    padding: 12px 28px;
+    background: rgb(13, 141, 150);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    width: fit-content;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 6px;
+}
+
+.btn-more:hover {
+    background: rgb(9, 100, 107);
+    transform: translateY(-1px);
+}
+
+/* ===== ZAJĘCIA ===== */
+.zajecia-section {
+    padding: 80px 80px;
+    background: #f7fafa;
+    text-align: center;
+}
+
+.zajecia-section > .slide-in {
+    margin-bottom: 50px;
+}
+
+.zajecia-section .section-sub {
+    margin: 12px auto 0;
+}
+
+.zajecia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+    text-align: left;
+}
+
+.zajecia-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.zajecia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(13,141,150,0.15);
+    border-bottom-color: rgb(13, 141, 150);
+}
+
+.zajecia-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+.zajecia-card h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 0 0 10px;
+}
+
+.zajecia-card p {
+    font-size: 0.92rem;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ===== UMIEJĘTNOŚCI ===== */
+.umiejetnosci-section {
+    padding: 80px 80px;
+    background: rgb(13, 141, 150);
+    text-align: center;
+}
+
+.umiejetnosci-section > .slide-in {
+    margin-bottom: 48px;
+}
+
+.umiejetnosci-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.umiejetnosc {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgb(204, 204, 204);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: rgb(0, 0, 0);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.umiejetnosc:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.check {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background: rgba(255,255,255,0.25);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===== DLACZEGO WARTO ===== */
+.dlaczego-section {
+    padding: 80px 80px;
+    text-align: center;
+}
+
+.dlaczego-section > .slide-in {
+    margin-bottom: 48px;
+}
+
+.dlaczego-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    text-align: left;
+}
+
+.dlaczego-card {
+    padding: 36px 28px;
+    border-radius: 16px;
+    border: 1.5px solid #eee;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.dlaczego-card:hover {
+    border-color: rgb(13, 141, 150);
+    box-shadow: 0 6px 24px rgba(13,141,150,0.1);
+}
+
+.dlaczego-num {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(13, 141, 150, 0.2);
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.dlaczego-card h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 0 0 10px;
+}
+
+.dlaczego-card p {
+    font-size: 0.92rem;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ===== GDZIE PRACOWAĆ ===== */
+.praca-section {
+    padding: 80px 80px;
+    background: #f7fafa;
+    text-align: center;
+}
+
+.praca-section > .slide-in {
+    margin-bottom: 48px;
+}
+
+.praca-section .section-sub {
+    margin: 12px auto 0;
+}
+
+.praca-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.praca-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.praca-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(13,141,150,0.12);
+}
+
+.praca-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.praca-card h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin: 0 0 10px;
+}
+
+.praca-card p {
+    font-size: 0.87rem;
+    color: #777;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111;
+    color: #aaa;
+    padding: 60px 80px 0;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.footer-logo {
+    height: 40px;
+    width: auto;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+}
+
+.footer-col p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.footer-col h4 {
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 16px;
+}
+
+.footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col ul li a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.15s;
+}
+
+.footer-col ul li a:hover {
+    color: rgb(13, 141, 150);
+}
+
+.footer-bottom {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0;
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+@media (max-width: 900px) {
+    .flex,
+    .prawa {
+        flex-direction: column;
+        padding: 40px 24px;
+        gap: 32px;
+    }
+
+    .section-intro {
+        padding: 50px 24px 40px;
+    }
+
+    .section-label-full {
+        padding: 40px 24px 16px;
+    }
+
+    .zajecia-section,
+    .umiejetnosci-section,
+    .dlaczego-section,
+    .praca-section {
+        padding: 60px 24px;
+    }
+
+    footer {
+        padding: 50px 24px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stats-row {
+        gap: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .kont-head {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .kont-head > a:nth-child(2) {
+        position: static;
+        transform: none;
+    }
+
+    .hero-text {
+        bottom: 8%;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .dlaczego-grid,
+    .praca-grid {
+        grid-template-columns: 1fr;
+    }
+}

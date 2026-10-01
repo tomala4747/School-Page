@@ -1,0 +1,63 @@
+/* Podstawowy wygląd paska */
+.navbar {
+  background-color: #2c3e50;
+  font-family: Arial, sans-serif;
+}
+
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Układa elementy obok siebie */
+}
+
+/* Styl pojedynczego kafelka w menu głównym */
+.menu-item {
+  position: relative; /* Ważne: punkt odniesienia dla podmenu */
+}
+
+.menu-item > a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-item:hover > a {
+  background-color: #34495e;
+}
+
+/* --- LOGIKA ROZWIJANIA --- */
+
+.submenu {
+  display: none;      /* Domyślnie ukryte */
+  position: absolute; /* Wyskakuje "nad" treścią strony */
+  top: 100%;          /* Pojawia się dokładnie pod linkiem głównym */
+  left: 0;
+  background-color: #ffffff;
+  min-width: 200px;
+  list-style: none;
+  padding: 0;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+/* Pokazywanie po najechaniu */
+.menu-item:hover .submenu {
+  display: block;
+}
+
+/* Wygląd linków wewnątrz podmenu */
+.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.submenu li a:hover {
+  background-color: #f1f1f1;
+  color: #c0392b; /* Kolor akcentu, np. czerwony szkolny */
+}
